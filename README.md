@@ -20,28 +20,23 @@ TrustChain Pay enables users to connect their Stellar wallet, view their XLM bal
 - View transaction on Stellar Explorer
 
 ## 🚀 Setup Instructions
-1. Clone the repository:
-   git clone https://github.com/Pritty05/trustchain-pay.git
+
+1. Clone the repository: git clone https://github.com/Pritty05/trustchain-pay.git
 
 2. Install dependencies:
-   cd trustchain-pay
-   npm install
+cd trustchain-pay
+npm install
 
-3. Run the app:
-   npm run dev
+3. Run the app: npm run dev
 
 4. Open browser at http://localhost:5173
 
 ## 📋 Requirements
-- Freighter Wallet browser extension
-- Set Freighter to Testnet
+- Freighter Wallet browser extension installed
+- Freighter set to Testnet network
 
-## 📸 Screenshots
-### Wallet Connected + Balance
-![Wallet Connected](screenshots/wallet-connected.png)
+## 🔗 Testnet Transaction Proof
+Transaction Hash: 916a67ed3c72e7b53081d7f12ca95aca482a093e7f4aa5517bf85f1ff23b613c
 
-### Transaction Successful
-![Transaction Success](screenshots/transaction-success.png)
+View on Stellar Explorer: https://stellar.expert/explorer/testnet/tx/916a67ed3c72e7b53081d7f12ca95aca482a093e7f4aa5517bf85f1ff23b613c
 
-### Stellar Explorer Confirmation
-![Explorer](screenshots/stellar-explorer.png)
