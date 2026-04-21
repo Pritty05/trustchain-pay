@@ -2,6 +2,9 @@
 
 A decentralized payment dApp built on the Stellar blockchain testnet.
 
+## 🌐 Live Demo
+👉 https://trustchain-pay.vercel.app
+
 ## 📌 Project Description
 TrustChain Pay enables users to connect their Stellar wallet, view their XLM balance, and send XLM transactions on the Stellar testnet. It provides transparent payment verification through transaction hashes and real-time blockchain confirmation.
 
@@ -21,7 +24,8 @@ TrustChain Pay enables users to connect their Stellar wallet, view their XLM bal
 
 ## 🚀 Setup Instructions
 
-1. Clone the repository: git clone https://github.com/Pritty05/trustchain-pay.git
+1. Clone the repository:
+git clone https://github.com/Pritty05/trustchain-pay.git
 
 2. Install dependencies:
 cd trustchain-pay
@@ -35,8 +39,27 @@ npm install
 - Freighter Wallet browser extension installed
 - Freighter set to Testnet network
 
+## 📸 Screenshots
+
+### 1. Connect Wallet Button
+![Connect Wallet](Level-1%20Screenshots/connect-wallet.jpg)
+
+### 2. Wallet Connected + Balance
+![Wallet Connected](Level-1%20Screenshots/wallet-connected.jpg)
+
+### 3. Send XLM Form
+![Send XLM](Level-1%20Screenshots/send-xlm.jpg)
+
+### 4. Transaction Successful
+![Transaction Success](Level-1%20Screenshots/transaction-success.jpg)
+
+### 5. Stellar Explorer Confirmation
+![Stellar Explorer](Level-1%20Screenshots/stellar-explorer.jpg)
+
 ## 🔗 Testnet Transaction Proof
-Transaction Hash: 916a67ed3c72e7b53081d7f12ca95aca482a093e7f4aa5517bf85f1ff23b613c
 
-View on Stellar Explorer: https://stellar.expert/explorer/testnet/tx/916a67ed3c72e7b53081d7f12ca95aca482a093e7f4aa5517bf85f1ff23b613c
+Transaction Hash:
+157237fd3f964bc0044eaaf724ea812bf190d4272f0b400312bd8639166c80b5
 
+View on Stellar Explorer:
+https://stellar.expert/explorer/testnet/tx/157237fd3f964bc0044eaaf724ea812bf190d4272f0b400312bd8639166c80b5
