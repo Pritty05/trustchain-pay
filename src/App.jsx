@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { requestAccess, signTransaction } from "@stellar/freighter-api";
+import { requestAccess } from "@stellar/freighter-api";
 import {
   TransactionBuilder,
   Networks,
@@ -60,14 +60,10 @@ function App() {
       setTxStatus("⏳ Processing transaction...");
       setTxHash("");
 
-      // Fetch account data
       const accountRes = await fetch(`${HORIZON_URL}/accounts/${wallet}`);
       const accountData = await accountRes.json();
-
-      // Build proper Account object
       const account = new Account(wallet, accountData.sequence);
 
-      // Build transaction
       const transaction = new TransactionBuilder(account, {
         fee: BASE_FEE,
         networkPassphrase: Networks.TESTNET,
@@ -82,14 +78,14 @@ function App() {
         .setTimeout(30)
         .build();
 
-      // Sign with Freighter
-      const signResult = await signTransaction(transaction.toXDR(), {
-        networkPassphrase: Networks.TESTNET,
-      });
+      const signResult = await import("@stellar/freighter-api").then(m =>
+        m.signTransaction(transaction.toXDR(), {
+          networkPassphrase: Networks.TESTNET,
+        })
+      );
 
       const signedXDR = signResult.signedTxXdr || signResult;
 
-      // Submit transaction
       const submitRes = await fetch(`${HORIZON_URL}/transactions`, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -111,7 +107,6 @@ function App() {
 
     } catch (err) {
       setTxStatus("❌ Error: " + err.message);
-      console.log(err);
     } finally {
       setSending(false);
     }
@@ -130,7 +125,6 @@ function App() {
       ) : (
         <div style={{ maxWidth: "520px", margin: "20px auto" }}>
 
-          {/* Wallet Info */}
           <div style={{ border: "1px solid #ddd", borderRadius: "10px",
             padding: "20px", marginBottom: "20px" }}>
             <p><b>✅ Wallet Connected</b></p>
@@ -148,28 +142,17 @@ function App() {
             </button>
           </div>
 
-          {/* Send XLM */}
           <div style={{ border: "1px solid #ddd", borderRadius: "10px",
             padding: "20px", marginBottom: "20px" }}>
             <h3>💸 Send XLM</h3>
-            <input
-              type="text"
-              placeholder="Recipient Address (G...)"
-              value={recipient}
-              onChange={e => setRecipient(e.target.value)}
+            <input type="text" placeholder="Recipient Address (G...)"
+              value={recipient} onChange={e => setRecipient(e.target.value)}
               style={{ width: "100%", padding: "10px", marginBottom: "10px",
-                borderRadius: "5px", border: "1px solid #ccc",
-                boxSizing: "border-box" }}
-            />
-            <input
-              type="number"
-              placeholder="Amount (XLM)"
-              value={amount}
-              onChange={e => setAmount(e.target.value)}
+                borderRadius: "5px", border: "1px solid #ccc", boxSizing: "border-box" }} />
+            <input type="number" placeholder="Amount (XLM)"
+              value={amount} onChange={e => setAmount(e.target.value)}
               style={{ width: "100%", padding: "10px", marginBottom: "10px",
-                borderRadius: "5px", border: "1px solid #ccc",
-                boxSizing: "border-box" }}
-            />
+                borderRadius: "5px", border: "1px solid #ccc", boxSizing: "border-box" }} />
             <button onClick={sendXLM} disabled={sending}
               style={{ width: "100%", padding: "10px", background: "#4CAF50",
                 color: "white", border: "none", borderRadius: "5px",
@@ -178,7 +161,6 @@ function App() {
             </button>
           </div>
 
-          {/* Transaction Result */}
           {txStatus && (
             <div style={{ border: "1px solid #ddd", borderRadius: "10px",
               padding: "20px",
@@ -192,15 +174,13 @@ function App() {
                     {txHash}
                   </p>
                   <a href={`https://stellar.expert/explorer/testnet/tx/${txHash}`}
-                    target="_blank" rel="noreferrer"
-                    style={{ color: "blue" }}>
+                    target="_blank" rel="noreferrer" style={{ color: "blue" }}>
                     View on Stellar Explorer →
                   </a>
                 </div>
               )}
             </div>
           )}
-
         </div>
       )}
     </div>
